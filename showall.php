@@ -38,37 +38,83 @@
 
             <div class="results">
 
+                  <!-- Heading and subtitle  -->  
+                
+
                 <span class="sub_heading"><a href="<?php echo $find_rs['URL']; ?>" target="_blank" >
-                <?php echo $find_rs['Name']; ?></a></span> - 
+                <?php echo $find_rs['Name']; ?></a></span> 
                 <?php
                 
-                    if (?>
-                    <?php echo $find_rs['Subtitle']; ?>
-                    <?php == ""){
+                    if (
+                    $find_rs['Subtitle'] != "")
+                    {
                         ?>
-                        <?php
-                        echo "No Subtitle" ?>
-                        <?php
-                    }   
-                    else {
-                        ?><?php echo $find_rs['Subtitle']; ?><?php
-                    }
+                         <span class="sub_heading">&nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $find_rs['Subtitle']; ?></span>
+                    <?php
+                    }   //end if                     
                 
                 ?>
 
-            
-                <p>Genre: <span class="sub_heading"><?php echo $find_rs['Genre']; ?></span></p>
-                <p>Developer: <span class="sub_heading"><?php echo $find_rs['DevName']; ?></span></p>
-                <p>Rating: <span class="sub_heading">
+                <!-- end of Heading and subtitle  --> 
+
+                <!-- Ratings  -->  
+                
+                <p>
                     <?php 
                     for ($x=0; $x < $find_rs['User Rating']; $x++)
                     {
                         echo "&#9733;";
                     }                    
                     
-                    ?> based on <?php echo $find_rs['Rating Count']; ?> votes
+                    ?> (<?php echo $find_rs['User Rating']; ?> based on <?php echo $find_rs['Rating Count']; ?> votes)
 
+                </p>
+
+                <!-- end of Ratings  --> 
+
+                <!-- Price -->
+                
+                <?php
+                
+                    if ($find_rs['Price'] == 0)
+                    {
+                        ?>
+                        
+                         <p><span class="sub_heading">Free</span>
+                         <?php 
+                            if($find_rs['In App'] == 1){                                
+                            ?>
+                                (In App Purchase)
+                            <?php
+
+
+                            } //end app purchase if  
+                            
+                        ?>
+
+
+                         </p>
+                         
+                    <?php
+
+                    } //end price if  
+
+                    // display the price
+                    else {
+                        ?>
+                        <p>Price: $<?php echo $find_rs['Price']; ?></p>
+                        <?php
+                    }
+                    
+                ?>
                 </span></p>
+                
+
+                <!-- end Price -->
+            
+                <p><span class="sub_heading">Genre: </span><?php echo $find_rs['Genre']; ?></p>
+                <p><span class="sub_heading">Developer: </span><?php echo $find_rs['DevName']; ?></span></p>
+                
                 <p><span class="sub_heading">Description:</span></p>
 
                 <p>
