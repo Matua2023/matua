@@ -1,7 +1,7 @@
 <?php include("head_nav.php"); 
 
     $name_dev = $_POST['dev_name'];
-
+    
     $find_sql="SELECT * FROM `game_details` 
     JOIN genre ON (game_details.GenreID = genre.GenreID)
     JOIN developer ON (game_details.DeveloperID = developer.DeveloperID)

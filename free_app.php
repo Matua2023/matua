@@ -1,6 +1,6 @@
 <?php include("head_nav.php"); 
 
-    $free_app = $_POST['free'];
+    //$free_app = $_POST['free'];
 
     $find_sql="SELECT * FROM `game_details` 
     JOIN genre ON (game_details.GenreID = genre.GenreID)
