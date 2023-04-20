@@ -52,10 +52,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     //if there are errors
-    if ($has_errors == "no") {    
+    if ($has_errors == "no") {   
 
-
-    // go tosuccess page
+    // go to success page
+    header('Location: add_success.php');
 
 
     // get developer ID if it exists
@@ -83,8 +83,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     } // end of if
 
-
     // add to the database
+    $addentry_sql = "INSERT INTO `game_details` (`ID`, `Name`, `Subtitle`, `URL`, `GenreID`, `DeveloperID`, `Age`, `User Rating`, `Rating Count`, `Price`, `In App`, `Description`) VALUES (NULL, '$app_name', '$subtitle', '$url', $genreID, $developerID, $age, $rating, $rating_count, $cost, $in_app, '$description');";
+    $addentry_query=mysqli_query($dbconnect, $addentry_sql);
 
     } // end of no errors if
     
